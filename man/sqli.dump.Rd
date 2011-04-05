@@ -1,9 +1,9 @@
 \name{sqli.dump}
 \alias{sqli.dump}
 %- Also NEED an '\alias' for EACH other topic documented here.
-\title{ Save maps into SQLite database }
+\title{ Save maps into spatialite database }
 \description{
-   Save Map or Spatial objects into SQLite database in two geometry and attribute tables.
+   Save Spatial objects into SQLite database as a geometry and an attribute tables.
 }
 \usage{
 sqli.dump(db, mapobj, mn)
@@ -17,27 +17,30 @@ sqli.dump(db, mapobj, mn)
 
 \author{ Norbert Solymosi <solymosi.norbert@gmail.com> }
 
-\seealso{ \code{\link{sqli2map}}, \code{\link{sqli2sp}}, \code{maptools} package, \code{sp} package}
+\seealso{ \code{\link{sqli2sp}}, \code{sp} package}
 \examples{
-sqli.db <- system.file("sqlimaps/sids.db3", package="SQLiteMap")
+sqli.db <- system.file("sqlimaps/maps.sqlite", package="SQLiteMap")
 drv <- dbDriver("SQLite")
-con <- dbConnect(drv, dbname = sqli.db)
+con <- dbConnect(drv, dbname = sqli.db, loadable.extensions = TRUE)
+spatialite.init(con)
 
+sql <- 'select SP_ID, NAME, BIR74, SID74, BIR79, SID79, 
+  astext(geometry) as geom from sids'
+sids <- dbGetQuery(con, sql)
 
-sql <- 'select sidsmap.gid, sidsmap.geom, sidsattr.* 
-  from sidsmap Inner Join sidsattr On sidsattr.sp_id = sidsmap.sp_id 
-  order by sidsattr.name'
-rs <- dbSendQuery(con, sql)
-join.data <- fetch(rs, n = -1)
-
-
-sids.sp <- sqli2sp(geoms=join.data, gcol='geom', idcol='name')
-sids.attr <- data.frame(R74 = join.data$sid74/join.data$bir74, 
-  R79 = join.data$sid79/join.data$bir79)
-rownames(sids.attr) <- join.data$name
+sids.sp <- sqli2sp(geoms=sids, gcol='geom', idcol='NAME')
+sids.attr <- data.frame(R74 = sids$SID74/sids$BIR74, 
+  R79 = sids$SID79/sids$BIR79)
+rownames(sids.attr) <- sids$NAME
 sids.df <- SpatialPolygonsDataFrame(sids.sp, sids.attr)
 
-
-sqli.dump(db = 'test.db3', mapobj = sids.df, mn = 'sidsexport')
+\dontrun{
+t.db = '/home/user/wd/targetdb.sqlite'
+t.con = dbConnect(SQLite(), dbname = t.db)
+sqli.dump(t.con, mapobj = sids.df, mn = 'sidsexport')
 }
+
+}
+
+
 \keyword{ spatial }

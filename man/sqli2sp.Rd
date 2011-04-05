@@ -8,10 +8,9 @@
 \usage{
 sqli2sp(geoms, gcol, idcol)
 }
-%- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{geoms}{ table contains the WKT geometry field}
-  \item{gcol}{ the geometry field of \code{geoms} table }
+  \item{gcol}{ WKT field of \code{geoms} table, what can be transformed from spatialite Geometry type field by SQL statement Astext() }
   \item{idcol}{ field of \code{geoms} table for identification }
 }
 
@@ -21,30 +20,25 @@ Returns SpatalPolygons, SpatialLines or SpatialPoints depending on the source ge
 
 \author{ Norbert Solymosi <solymosi.norbert@gmail.com> }
 
-\seealso{ \code{\link{sqli2map}}, \code{\link{sqli.dump}}, \code{sp} package}
+\seealso{ \code{\link{sqli.dump}}, \code{sp} package}
 \examples{
-sqli.db <- system.file("sqlimaps/sids.db3", package="SQLiteMap")
+sqli.db <- system.file("sqlimaps/maps.sqlite", package="SQLiteMap")
 drv <- dbDriver("SQLite")
-con <- dbConnect(drv, dbname = sqli.db)
+con <- dbConnect(drv, dbname = sqli.db, loadable.extensions = TRUE)
+spatialite.init(con)
 
+sql <- 'select SP_ID, NAME, BIR74, SID74, BIR79, SID79, 
+  astext(geometry) as geom from sids'
+sids <- dbGetQuery(con, sql)
 
-sql <- 'select sidsmap.gid, sidsmap.geom, sidsattr.* 
-  from sidsmap Inner Join sidsattr On sidsattr.sp_id = sidsmap.sp_id 
-  order by sidsattr.name'
-rs <- dbSendQuery(con, sql)
-join.data <- fetch(rs, n = -1)
-
-
-sids.sp <- sqli2sp(geoms=join.data, gcol='geom', idcol='name')
-sids.attr <- data.frame(R74 = join.data$sid74/join.data$bir74, 
-  R79 = join.data$sid79/join.data$bir79)
-rownames(sids.attr) <- join.data$name
+sids.sp <- sqli2sp(geoms=sids, gcol='geom', idcol='NAME')
+sids.attr <- data.frame(R74 = sids$SID74/sids$BIR74, 
+  R79 = sids$SID79/sids$BIR79)
+rownames(sids.attr) <- sids$NAME
 sids.df <- SpatialPolygonsDataFrame(sids.sp, sids.attr)
 
-
-library(RColorBrewer)
-spplot(sids.df, 
-  col.regions = colorRampPalette(brewer.pal(9,"OrRd")[1:9])(140))
+spplot(sids.df)
 }
+
 
 \keyword{ spatial }

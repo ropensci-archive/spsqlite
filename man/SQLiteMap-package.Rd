@@ -2,34 +2,42 @@
 \alias{SQLiteMap-package}
 \alias{SQLiteMap}
 \docType{package}
-\title{A package to manage vector graphical maps using SQLite
-
-}
+\title{Wrapper to spatialite functions}
 \description{
-Some server based database management systems implemented the OpenGIS "Simple
-Features Specification for SQL". The OpenGIS specification defines two standard ways
-of expressing spatial features: the Well-Known Text (WKT) form and the Well-Known
-Binary (WKB) form. Both WKT and WKB include information about the type of the
-feature and the coordinates which form the feature. These systems (e.g. PostgreSQLPostGIS,
-MySQL, ORACLE, MSSQL) allow to store the topological features and the
-descriptive data in the same database. \cr
-But these systems assume that the user needs permission to a running service or to
-install a server to use the spatial data. In some cases, it is useful if the user can use the
-database stored maps on different computers and platforms. The SQLite is a good choice
-for a portable database, it is platform-idendependent and there are some R packages to
-manage SQLite databases. Unfortunately, it has no spatial extension, but there is an
-SQLite extension for the SharpMap library.\cr
-Following the idea of this solution this package was developed that may help the user read
-and write spatial features from and to an SQLite database. Each table with geometry
-field is treated as a layer. The tables contain the topological features in one geometry field in WKT form.\cr
-For conversion of standard map files to SQLite table maps2WinBUGS can be used.
+Provides bindings to spatialite functionalities. Through this bindings (due to OGC specifications)  numerous spatial functions can be performed by simple SQL statements.
 }
+\section{Main available SQL statements}{
+
+\tabular{lll}{
+  \tab  \tab  \cr
+ AddGeometryColumn \tab ExteriorRing \tab MBRWithin \cr
+ Area \tab FilterMbrWithin \tab NumInteriorRings \cr
+ AsBinary \tab FilterMbrContains \tab NumGeometries \cr
+ AsText \tab FilterMbrIntersects \tab NumPoints \cr
+ Buffer \tab GeometryN \tab Overlaps \cr
+ Centroid \tab GeometryType \tab PointN \cr
+ Contains \tab GeomFromText \tab RecoverGeometryColumn \cr
+ ConvexHull \tab GeomFromWKB \tab Relate \cr
+ CreateMbrCache \tab GLength \tab SetSrid \cr
+ CreateSpatialIndex \tab GUnion \tab Simplify \cr
+ Crosses \tab InteriorRingN \tab SimplifyPreserveTopology \cr
+ Difference \tab Intersection \tab SRID \cr
+ Dimension \tab Intersects \tab StartPoint \cr
+ DisableSpatialIndex \tab MBRContains \tab SymDifference \cr
+ DiscardGeometryColumn \tab MBRDisjoint \tab Touches \cr
+ Disjoint \tab MBREqual \tab Transform \cr
+ EndPoint \tab MBRIntersects \tab Within \cr
+ Envelope \tab MBROverlaps \tab X \cr
+ Equal \tab MBRTouches \tab Y \cr
+}
+}
+
 \details{
 \tabular{ll}{
 Package: \tab SQLiteMap\cr
 Type: \tab Package\cr
-Version: \tab 0.3\cr
-Date: \tab 2008-07-28\cr
+Version: \tab 0.5\cr
+Date: \tab 2011-04-05\cr
 License: \tab GPL-2\cr
 LazyLoad: \tab yes\cr
 }
@@ -40,9 +48,12 @@ Norbert Solymosi
 Maintainer: Norbert Solymosi <solymosi.norbert@gmail.com>
 }
 \references{
+http://www.sqlite.org/\cr
+http://www.gaia-gis.it/spatialite/\cr
+http://www.gaia-gis.it/spatialite-2.4.0-4/spatialite-cookbook/\cr
 http://www.opengeospatial.org/standards\cr
-http://postgis.refractions.net/\cr
-http://www.codeplex.com/SharpMap\cr
-http://sourceforge.net/projects/maps2winbugs
+http://www.qgis.org/\cr
+http://sourceforge.net/projects/maps2winbugs\cr
 }
 \keyword{ spatial }
+\keyword{ SQL }
