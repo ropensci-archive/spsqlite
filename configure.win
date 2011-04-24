@@ -1,0 +1,10 @@
+#!/bin/sh
+if test -z "$LIB_ICONV" ; then  
+  echo "Please define LIB_ICONV"
+  exit 1
+fi
+mkdir $R_PACKAGE_DIR/libs
+mkdir $R_PACKAGE_DIR/libs/i386
+mkdir $R_PACKAGE_DIR/libs/x64
+cp $LIB_ICONV/bin/iconv.dll $R_PACKAGE_DIR/libs/i386
+cp $LIB_ICONV64/bin/libiconv-2.dll $R_PACKAGE_DIR/libs/x64

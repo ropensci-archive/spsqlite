@@ -67,8 +67,6 @@ if test [ -n "$geos_lib_path" ] ; then
     AC_SUBST([LIBS], ["-L${geos_lib_path} ${LIBS}"])
 fi
 
-LIBS="${LIBS}-lpthread"
-
 AC_SUBST(CPPFLAGS)
 AC_SUBST(LIBS)
 AC_CONFIG_FILES([src/Makevars])

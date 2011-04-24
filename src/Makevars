@@ -1,3 +1,0 @@
-PKG_CPPFLAGS = 
-PKG_LIBS = -lgeos_c -lproj -lpthread
-

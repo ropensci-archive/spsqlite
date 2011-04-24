@@ -3681,8 +3681,6 @@ if test  -n "$geos_lib_path"  ; then
 
 fi
 
-LIBS="${LIBS}-lpthread"
-
 
 
 ac_config_files="$ac_config_files src/Makevars"

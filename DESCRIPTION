@@ -1,8 +1,8 @@
 Package: SQLiteMap
 Type: Package
 Title: Wrapper to spatialite functions
-Version: 0.5
-Date: 2011-04-05
+Version: 0.6.1
+Date: 2011-04-24
 Author: Norbert Solymosi
 Maintainer: Norbert Solymosi <solymosi.norbert@gmail.com>
 Depends: R (>= 2.12.2), RSQLite, sp
@@ -11,6 +11,6 @@ Description: Provides bindings to spatialite functionalities. Through
         functions can be performed by simple SQL statements.
 License: GPL-2
 LazyLoad: yes
-Packaged: 2011-04-05 16:30:52 UTC; sn
+Packaged: 2011-04-24 08:26:57 UTC; sn
 Repository: CRAN
-Date/Publication: 2011-04-05 17:17:16
+Date/Publication: 2011-04-24 10:29:47
