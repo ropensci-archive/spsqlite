@@ -1,3 +1,5 @@
+flush(stderr()); flush(stdout())
+
 sqli2sp = function(geoms, gcol, idcol)
 {   
    mt = sub(' ', '', strsplit(geoms[1,gcol], '\\(')[[1]][1])
