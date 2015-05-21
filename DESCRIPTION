@@ -1,7 +1,7 @@
 Package: spsqlite
 Type: Package
 Title: SQLite Spatial Client
-Description: More about what it does (maybe more than one line)
+Description: SQLite Spatial Client.
 Version: 0.0.1.9000
 Authors@R: person("Scott", "Chamberlain", role = c("aut", "cre"),
     email = "myrmecocystus@gmail.com")
