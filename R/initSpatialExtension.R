@@ -47,3 +47,15 @@ lib_path <- function()
 {
   getLoadedDLLs()[["RSQLite.spatialite"]][["path"]]
 }
+
+
+#' Quick query if spatiallite is loaded
+#' @author Martin Jung
+#' @param con A RSQLite connection link
+#' @export
+#' @keywords internal
+
+is_spatial <- function(con) {
+  res <- try(dbGetQuery(con,"SELECT spatialite_version()"),silent = TRUE)
+  if(class(res) != "try-error") return(TRUE) else return(FALSE)
+}
