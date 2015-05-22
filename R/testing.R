@@ -17,15 +17,12 @@ dbGetQuery(con,"SELECT * FROM Towns LIMIT 2")
 # Now query the same but format the geometry using spatialite functions (X,Y)
 dbGetQuery(con,"SELECT Name, X(Geometry) AS Longitude, Y(Geometry) AS Latitude, SRID(Geometry) as SRID, GeometryType(Geometry) FROM Towns LIMIT 2")
 
-<<<<<<< HEAD
 # Calculate the length im m of the biggest 5 Highways
 dbGetQuery(con,"SELECT Name, Length(Geometry) as length FROM HighWays ORDER BY length DESC LIMIT 5")
 
 # Or the total area of all regions in Italy
 dbGetQuery(con,"SELECT Name, Sum(Area(Geometry))  FROM Regions")
 
-=======
->>>>>>> 5856de5d5ee9e86cd31f50cec1d204848bf2744a
 # It is also possible to open spatialobjects with rgdal given that spatiallite is enabled
 library(rgdal)
 .SQLiteExists() # From utils.R
@@ -39,10 +36,3 @@ towns <- readOGR(dsn = "data/test-2.3.sqlite",layer = "Towns")
 # Strangley writing does not work for me ?
 towns_big <- subset(towns,Peoples>500000)
 writeOGR(obj = towns_big,dsn = "data/test-2.3.sqlite",layer = "towns_big",driver = "SQLite",overwrite_layer = TRUE,dataset_options=c("SPATIALITE=yes"))
-<<<<<<< HEAD
-=======
-
-
-
-
->>>>>>> 5856de5d5ee9e86cd31f50cec1d204848bf2744a
