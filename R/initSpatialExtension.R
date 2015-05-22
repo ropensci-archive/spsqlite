@@ -4,6 +4,7 @@
 #' which has a 'Artistic-2.0' license
 #'
 #' @author Martin Jung
+#' @param con A RSQLite connection link
 #' @export
 
 initSpatialExtension <- function(con) {
@@ -24,8 +25,8 @@ initSpatialExtension <- function(con) {
 
   # Test if spatial extension is already loaded
   res <- try(dbGetQuery(con,"SELECT spatialite_version()"),silent = TRUE)
-  if(class(res) == "try-error") {
-    warning("Spatial SQlite extension already loaded")
+  if(class(res) != "try-error") {
+    stop("Spatial SQlite extension already loaded")
   } else {
     res <- try( dbGetQuery(con, sprintf("SELECT load_extension('%s')",lib_path())),silent = TRUE)
     # Check if correctly loaded
