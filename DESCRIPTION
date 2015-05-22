@@ -5,12 +5,13 @@ Description: SQLite Spatial Client.
 Version: 0.0.1.9000
 Authors@R: c(person("Scott", "Chamberlain", role = c("aut", "cre"),
     email = "myrmecocystus@gmail.com"),
-    person("Martin","Jung",role=c("aut","cre"),email="martinjung@zoho.com"))
+    person("Martin","Jung",role=c("aut"),email="martinjung@zoho.com"))
 License: MIT + file LICENSE
 LazyData: true
 URL: https://github.com/ropensci/spsqlite
 BugReports: http://www.github.com/ropensci/spsqlite/issues
-Imports:
-    RSQLite (>= 1.0.0),
+Suggests:
     rgdal (>= 0.9),
     sp (>= 1.0)
+Imports:
+    RSQLite (>= 1.0.0)
