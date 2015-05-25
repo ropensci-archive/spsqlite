@@ -4,6 +4,7 @@
 # http://www.gaia-gis.it/gaia-sins/spatialite-sql-4.2.0.html#p5
 
 library(RSQLite)
+library(spsqlite)
 con <- invisible(dbConnect(RSQLite::SQLite(),dbname="data/test-2.3.sqlite",loadable.extensions = TRUE))
 initSpatialExtension(con)
 
@@ -25,7 +26,6 @@ dbGetQuery(con,"SELECT Name, Sum(Area(Geometry))  FROM Regions")
 
 # It is also possible to open spatialobjects with rgdal given that spatiallite is enabled
 library(rgdal)
-.SQLiteExists() # From utils.R
 
 ogrListLayers("data/test-2.3.sqlite")
 ogrInfo("data/test-2.3.sqlite","Towns")

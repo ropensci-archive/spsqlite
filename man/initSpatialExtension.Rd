@@ -11,7 +11,7 @@ initSpatialExtension(con)
 }
 \description{
 Currently based on theloadable extension from Peter Schmiedeskamp
-which has a 'Artistic-2.0' license
+https://github.com/pschmied/RSQLite.spatialite
 }
 \author{
 Martin Jung
