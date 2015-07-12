@@ -4,6 +4,7 @@
 #' https://github.com/pschmied/RSQLite.spatialite
 #'
 #' @author Martin Jung
+#' @import RSQLite
 #' @param con A RSQLite connection link
 #' @export
 

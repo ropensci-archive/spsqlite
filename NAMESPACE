@@ -2,3 +2,4 @@
 
 export(initSpatialExtension)
 export(is_spatial)
+import(RSQLite)

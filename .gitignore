@@ -4,3 +4,5 @@
 notes.md
 src/*.o
 src/*.so
+config.log
+config.status
