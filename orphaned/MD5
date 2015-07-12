@@ -1,0 +1,16 @@
+237ecdc65500d533bdb30ccee397fc19 *DESCRIPTION
+8033ae4ed34f36c644a3a09aa8435fa3 *NAMESPACE
+e40b46b8d72260e10484f9179a52bd3f *R/SQLiteMap.R
+6d2d0f3cc80c5b677f6ec5f29346e0c0 *configure
+ed90d9c5ab40f241952f9c941bf76821 *configure.ac
+6cef23b24a87653e214378a1ac9df0b2 *configure.win
+30e11338db33e935f64bec18587b77d6 *inst/sqlimaps/maps.sqlite
+a51ba6a4d6120a2c4eb0fc3ceec295fa *man/SQLiteMap-package.Rd
+4806df086ae0dfae225dac225aff1669 *man/spatialite.init.Rd
+de2babd0b92811166e742bd977fd8635 *man/sqli.dump.Rd
+0b9f52ac94d42fa7808c5eda5c39f2c6 *man/sqli2sp.Rd
+e9378b516610ed4762fb1ea60ca562a2 *src/Makevars
+de266c3957591cf0e1e9f941101a1052 *src/Makevars.in
+0418170b651db6da10719f4796b3b131 *src/Makevars.win
+bb191d6a35b45b4b9f699a8380e7c742 *src/spatialite.c
+15b020d8df3e695225e03290c6cb1f23 *src/sqlite3.c

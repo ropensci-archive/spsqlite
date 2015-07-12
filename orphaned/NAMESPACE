@@ -1,0 +1,2 @@
+useDynLib("SQLiteMap")
+export(sqli.dump, sqli2sp, spatialite.init)
