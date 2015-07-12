@@ -1,0 +1,6 @@
+#!/bin/sh
+mkdir $R_PACKAGE_DIR/libs
+mkdir $R_PACKAGE_DIR/libs/i386
+mkdir $R_PACKAGE_DIR/libs/x64
+
+#cp -p src/config.h.win src/config.h

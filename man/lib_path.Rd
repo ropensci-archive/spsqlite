@@ -2,12 +2,12 @@
 % Please edit documentation in R/initSpatialExtension.R
 \name{lib_path}
 \alias{lib_path}
-\title{Get the path of the RSQLite.spatialite dll}
+\title{Get the path of the spsqlite dll}
 \usage{
 lib_path()
 }
 \description{
-Get the path of the RSQLite.spatialite dll
+Get the path of the spsqlite dll
 }
 \keyword{internal}
 
