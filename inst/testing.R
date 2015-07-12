@@ -5,7 +5,7 @@
 
 library(RSQLite)
 library(spsqlite)
-con <- invisible(dbConnect(RSQLite::SQLite(),dbname="data/test-2.3.sqlite",loadable.extensions = TRUE))
+con <- invisible(dbConnect(RSQLite::SQLite(),dbname="inst/examples/test-2.3.sqlite",loadable.extensions = TRUE))
 initSpatialExtension(con)
 
 # List Tables

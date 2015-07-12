@@ -3,7 +3,7 @@ context("initialize")
 test_that("spatial queries work", {
 
   library('RSQLite')
-  con <- invisible(dbConnect(RSQLite::SQLite(), dbname = "data/test-2.3.sqlite", loadable.extensions = TRUE))
+  con <- invisible(dbConnect(RSQLite::SQLite(), dbname = "inst/examples/test-2.3.sqlite", loadable.extensions = TRUE))
   suppressWarnings(initSpatialExtension(con))
 
   # List Tables
