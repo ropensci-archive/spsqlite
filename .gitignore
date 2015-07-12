@@ -6,3 +6,4 @@ src/*.o
 src/*.so
 config.log
 config.status
+spsqlite.Rproj
