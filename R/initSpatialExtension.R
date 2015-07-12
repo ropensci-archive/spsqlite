@@ -17,7 +17,10 @@ initSpatialExtension <- function(con) {
     stop("Spatial SQlite extension already loaded")
   } else {
     lib <- lib_path()
-    if(is.null(lib)) stop("Spatialite library could not be found!")
+    if(is.null(lib)) warning("Spatialite library not dynamically loaded!")
+    # Alternative lookup in local path
+    lib <- paste0(path.package("spsqlite"),"/libs/spsqlite.so")
+    if(!file.exists(lib))stop("Spatialite library could not be found!")
     res <- try( dbGetQuery(con, sprintf("SELECT load_extension('%s')",lib)),silent = TRUE)
     # Check if correctly loaded
     if(class(res) != "try-error" && all(dim(res) == c(1, 1))) {
