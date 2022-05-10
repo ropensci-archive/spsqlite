@@ -1,21 +1,5 @@
-spsqlite
-=========
+# spsqlite
 
+[![Project Status: Abandoned](https://www.repostatus.org/badges/latest/abandoned.svg)](https://www.repostatus.org/#abandoned)
 
-
-__SQLite Spatial Client__
-
-Alpha stage...
-
-## Authors: 
-
-* Martin Jung
-* Scott Chamberlain
-
-## Meta
-
-* Please [report any issues or bugs](https://github.com/ropensci/spsqlite/issues).
-* License: MIT
-* Get citation information for `spsqlite` in R doing `citation(package = 'spsqlite')`
-
-[![rofooter](http://ropensci.org/public_images/github_footer.png)](http://ropensci.org)
+This repository has been archived. The former README is now in [README-NOT.md](README-NOT.md).
